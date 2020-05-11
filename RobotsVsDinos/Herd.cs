@@ -6,11 +6,7 @@ using System.Threading.Tasks;
 
 namespace RobotsVsDinos
 {
-    class Program
+    class Herd
     {
-        static void Main(string[] args)
-        {
-
-        }
     }
 }

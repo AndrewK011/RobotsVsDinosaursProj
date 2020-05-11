@@ -12,19 +12,20 @@ namespace RobotsVsDinos
         public string name;
         public int health;
         public int powerLevel;
-        Weapon robotWeapon;
+        public Weapon robotWeapon;
+
 
         public Robot(string name, string weapon)
         {
             this.name = name;
             health = 100;
             powerLevel = 50;
-            Weapon robotWeapon = new Weapon(weapon);
+            robotWeapon = new Weapon(weapon);
         }
 
-        public void Attack()
+        public void Attack(Weapon robotWeapon, int enemyHealth)
         {
-
+            enemyHealth -= robotWeapon.attackPower;
         }
 
     }

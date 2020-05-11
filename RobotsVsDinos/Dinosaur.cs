@@ -23,9 +23,10 @@ namespace RobotsVsDinos
             this.attackPower = attackPower;
         }
 
-        public void Attack()
+        public int Attack()
         {
 
+            return attackPower;
         }
     }
 }

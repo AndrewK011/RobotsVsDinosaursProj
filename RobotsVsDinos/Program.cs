@@ -10,7 +10,7 @@ namespace RobotsVsDinos
     {
         static void Main(string[] args)
         {
-
+            Battlefield start = new Battlefield();
         }
     }
 }

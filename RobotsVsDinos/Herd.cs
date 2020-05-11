@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 namespace RobotsVsDinos
 {
-    class Herd
+    public class Herd
     {
         
-        List<Dinosaur> dinos = new List<Dinosaur>();
-        Dinosaur raptor = new Dinosaur("Raptor", 20);
-        Dinosaur trex = new Dinosaur("T-Rex", 25);
-        Dinosaur pterodactyl = new Dinosaur("Pterodactyl", 15);
+       public List<Dinosaur> dinos = new List<Dinosaur>();
+       public Dinosaur raptor = new Dinosaur("Raptor", 20);
+       public Dinosaur trex = new Dinosaur("T-Rex", 25);
+       public Dinosaur pterodactyl = new Dinosaur("Pterodactyl", 15);
+       
 
         public Herd()
         {
@@ -20,5 +21,16 @@ namespace RobotsVsDinos
             dinos.Add(trex);
             dinos.Add(pterodactyl);
         }
+
+        public int Attack(int dinoSelection)
+        {           
+            return dinos[dinoSelection].attackPower;
+        }
+
+        public void TakeDamage(int robotTargeted, int damageTaken)
+        {
+            dinos[robotTargeted].health -= damageTaken;
+        }
+
     }
 }

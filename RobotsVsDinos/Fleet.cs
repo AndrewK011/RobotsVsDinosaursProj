@@ -8,19 +8,30 @@ namespace RobotsVsDinos
 {
     public class Fleet
     {
-        List<Robot> robots = new List<Robot>();
-        Robot Optimus = new Robot("Optimus","Rockets");
-        Robot Hal = new Robot("Hal", "Superior Intellect");
-        Robot Phil = new Robot("Phil", "Fists");
+        public List<Robot> robots;
+        public Robot Optimus = new Robot("Optimus","Rockets");
+        public Robot Hal = new Robot("Hal", "Superior Intellect");
+        public Robot Phil = new Robot("Phil", "Fists");
 
         public Fleet()
         {
+            robots = new List<Robot>();
             robots.Add(Optimus);
             robots.Add(Hal);
             robots.Add(Phil);
         }
-        
-        
-        
+
+        public int Attack(int robotSelection)
+        {
+            
+            return robots[robotSelection].robotWeapon.attackPower;
+        }
+
+        public void TakeDamage(int robotTargeted,int damageTaken)
+        {
+            robots[robotTargeted].health -= damageTaken;
+        }
+
+
     }
 }

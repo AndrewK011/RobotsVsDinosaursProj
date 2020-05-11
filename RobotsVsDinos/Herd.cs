@@ -22,15 +22,9 @@ namespace RobotsVsDinos
             dinos.Add(pterodactyl);
         }
 
-        public int Attack(int dinoSelection)
-        {           
-            return dinos[dinoSelection].attackPower;
-        }
+      
 
-        public void TakeDamage(int robotTargeted, int damageTaken)
-        {
-            dinos[robotTargeted].health -= damageTaken;
-        }
+        
 
     }
 }

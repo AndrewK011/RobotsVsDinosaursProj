@@ -23,10 +23,10 @@ namespace RobotsVsDinos
             this.attackPower = attackPower;
         }
 
-        public int Attack()
+        public void Attack(Dinosaur attackByDino, Robot enemy)
         {
-
-            return attackPower;
+            enemy.health -= attackByDino.attackPower;
+            Console.WriteLine(enemy.name + " takes " + attackByDino.attackPower + " points of damage from " + attackByDino.type + ".");
         }
     }
 }

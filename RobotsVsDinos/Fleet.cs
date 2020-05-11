@@ -21,16 +21,9 @@ namespace RobotsVsDinos
             robots.Add(Phil);
         }
 
-        public int Attack(int robotSelection)
-        {
-            
-            return robots[robotSelection].robotWeapon.attackPower;
-        }
+       
 
-        public void TakeDamage(int robotTargeted,int damageTaken)
-        {
-            robots[robotTargeted].health -= damageTaken;
-        }
+       
 
 
     }

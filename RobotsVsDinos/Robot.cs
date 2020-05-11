@@ -23,9 +23,10 @@ namespace RobotsVsDinos
             robotWeapon = new Weapon(weapon);
         }
 
-        public void Attack(Weapon robotWeapon, int enemyHealth)
+        public void Attack(Robot attackByRobot, Dinosaur enemy)
         {
-            enemyHealth -= robotWeapon.attackPower;
+            enemy.health -= attackByRobot.robotWeapon.attackPower;
+            Console.WriteLine(enemy.type + " takes " + attackByRobot.robotWeapon.attackPower + " points of damage " + attackByRobot.name + ".");
         }
 
     }

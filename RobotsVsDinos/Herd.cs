@@ -22,9 +22,22 @@ namespace RobotsVsDinos
             dinos.Add(pterodactyl);
         }
 
-      
-
-        
+        public void CheckDinoRound()
+        {
+            
+            if (raptor.health <= 0)
+            {
+                dinos.Remove(raptor);
+            }
+            if(trex.health <= 0)
+            {
+                dinos.Remove(trex);
+            }
+            if(pterodactyl.health <= 0)
+            {
+                dinos.Remove(pterodactyl);
+            }
+        }
 
     }
 }

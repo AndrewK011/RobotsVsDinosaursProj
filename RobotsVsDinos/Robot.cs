@@ -27,6 +27,17 @@ namespace RobotsVsDinos
         {
             enemy.health -= attackByRobot.robotWeapon.attackPower;
             Console.WriteLine(enemy.type + " takes " + attackByRobot.robotWeapon.attackPower + " points of damage from " + attackByRobot.name + ".");
+
+            if (enemy.health <= 0)
+            {
+                Console.WriteLine(enemy.type + " has been defeated.");
+                
+            }
+            else
+            {
+                Console.WriteLine(enemy.type + " now has " + enemy.health + " health points remaining.");
+            }
+            
         }
 
     }

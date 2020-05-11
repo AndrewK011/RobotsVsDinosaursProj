@@ -21,9 +21,25 @@ namespace RobotsVsDinos
             robots.Add(Phil);
         }
 
-       
+        public void CheckRoboRound()
+        {
+            if (Optimus.health <= 0)
+            {
+                robots.Remove(Optimus);
+            }
+            if (Hal.health <= 0)
+            {
+                robots.Remove(Hal);
+            }
+            if (Phil.health <= 0)
+            {
+                robots.Remove(Phil);
+            }
+        }
 
-       
+
+
+
 
 
     }

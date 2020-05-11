@@ -12,6 +12,10 @@ namespace RobotsVsDinos
         public Fleet robotFleet;
         public int enemyIndex;
         public int attackerIndex;
+        public bool gameOver = false;
+        public bool dinoWin = false;
+        
+        public bool playerTurn;
         
 
         public Battlefield()
@@ -24,10 +28,34 @@ namespace RobotsVsDinos
         
         public void StartBattle()
         {
+            while (gameOver == false)
+            {
+                if (playerTurn)
+                {
+                    DinoAttack();
+                    CheckRoundResult();
+                    Console.WriteLine();
+                    playerTurn = !playerTurn;
+                }
+                else
+                { 
+                    RoboAttack();
+                    Console.WriteLine();
+                    CheckRoundResult();
+                    playerTurn = !playerTurn;
+                }
+            }
 
-           DinoAttack();
-            Console.WriteLine();
-           RoboAttack();
+            Console.WriteLine("Game Over");
+            if(dinoWin)
+            {
+                Console.WriteLine("Dinosaurs win!");
+            }
+            else
+            {
+                Console.WriteLine("Robots win!");
+            }
+
         }
 
         public void DinoAttack()
@@ -77,6 +105,23 @@ namespace RobotsVsDinos
 
 
             robotFleet.robots[attackerIndex].Attack(robotFleet.robots[attackerIndex], dinoHerd.dinos[enemyIndex]);
+        }
+
+        public bool CheckRoundResult()
+        {
+            dinoHerd.CheckDinoRound();
+            robotFleet.CheckRoboRound();
+            if(dinoHerd.dinos.Count == 0)
+            {
+                gameOver = true;
+                
+            }
+            else if(robotFleet.robots.Count == 0)
+            {
+                gameOver = true;
+                dinoWin = true;
+            }
+            return gameOver;
         }
 
 

@@ -26,7 +26,15 @@ namespace RobotsVsDinos
         public void Attack(Dinosaur attackByDino, Robot enemy)
         {
             enemy.health -= attackByDino.attackPower;
-            Console.WriteLine(enemy.name + " takes " + attackByDino.attackPower + " points of damage from " + attackByDino.type + ".");
+            Console.WriteLine(enemy.name + " takes " + attackByDino.attackPower + " points of damage from " + attackByDino.type + "'s attack.");
+            if (enemy.health <= 0)
+            {
+                Console.WriteLine(enemy.name + " has been defeated.");              
+            }
+            else
+            {
+                Console.WriteLine(enemy.name + " now has " + enemy.health + " health points remaining.");
+            }
         }
     }
 }

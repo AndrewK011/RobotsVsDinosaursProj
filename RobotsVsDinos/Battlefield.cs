@@ -8,5 +8,8 @@ namespace RobotsVsDinos
 {
     class Battlefield
     {
+        Herd dinoHerd = new Herd();
+        Fleet robotFleet = new Fleet();
+
     }
 }

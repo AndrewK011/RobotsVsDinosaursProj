@@ -6,7 +6,17 @@ using System.Threading.Tasks;
 
 namespace RobotsVsDinos
 {
-    class Weapon
+    public class Weapon
     {
+        //member variables
+        public string type;
+        public int attackPower;
+
+        //constructor
+        public Weapon(string type)
+        {
+            this.type = type;
+            attackPower = 25;
+        }
     }
 }

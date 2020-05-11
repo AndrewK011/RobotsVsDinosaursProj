@@ -6,7 +6,26 @@ using System.Threading.Tasks;
 
 namespace RobotsVsDinos
 {
-    class Robot
+    public class Robot
     {
+        //member variables
+        public string name;
+        public int health;
+        public int powerLevel;
+        Weapon robotWeapon;
+
+        public Robot(string name, string weapon)
+        {
+            this.name = name;
+            health = 100;
+            powerLevel = 50;
+            Weapon robotWeapon = new Weapon(weapon);
+        }
+
+        public void Attack()
+        {
+
+        }
+
     }
 }

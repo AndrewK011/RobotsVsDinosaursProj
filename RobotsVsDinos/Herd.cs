@@ -12,7 +12,7 @@ namespace RobotsVsDinos
         public List<Dinosaur> dinos = new List<Dinosaur>();
         public Dinosaur raptor = new Dinosaur("Raptor", 20);
         public Dinosaur trex = new Dinosaur("T-Rex", 25);
-        public Dinosaur pterodactyl = new Dinosaur("Pterodactyl", 15);
+        public Dinosaur pterodactyl = new Dinosaur("Pterodactyl", 20);
 
         
        
@@ -38,6 +38,24 @@ namespace RobotsVsDinos
             if(pterodactyl.health <= 0)
             {
                 dinos.Remove(pterodactyl);
+            }
+
+            if(raptor.energy <= 40)
+            {
+                raptor.energy += 10;
+
+            }
+            
+            if(trex.energy <= 40)
+            {
+                trex.energy += 10;
+
+            }
+
+            if (pterodactyl.energy <= 40)
+            {
+                pterodactyl.energy += 10;
+
             }
         }
 

@@ -42,6 +42,24 @@ namespace RobotsVsDinos
             {
                 robots.Remove(Phil);
             }
+
+            if (Optimus.powerLevel < 50)
+            {
+                Optimus.powerLevel += 10;
+
+            }
+
+            if (Hal.powerLevel < 50)
+            {
+                Hal.powerLevel += 10;
+
+            }
+
+            if (Phil.powerLevel < 50)
+            {
+                Phil.powerLevel += 10;
+
+            }
         }
 
         public void CreateWeaponList()

@@ -90,7 +90,7 @@ namespace RobotsVsDinos
             for(int i = 0; i < dinoHerd.dinos.Count; i++)
             {
                 Console.Write(i + ") ");
-                Console.WriteLine(dinoHerd.dinos[i].type);
+                Console.WriteLine(dinoHerd.dinos[i].type + " (" + dinoHerd.dinos[i].energy + " energy)");
             }
 
                 if (int.TryParse(Console.ReadLine(), out attackerIndex))
@@ -161,7 +161,7 @@ namespace RobotsVsDinos
 
         public void RoboAttack()
         {
-
+            
             bool validInput = false;
 
 
@@ -172,7 +172,7 @@ namespace RobotsVsDinos
                 {
                     Console.Write(i + ") ");
                     Console.WriteLine(robotFleet.robots[i].name + " [" + robotFleet.robots[i].robotWeapon.type + "]" +
-                        " (" + robotFleet.robots[i].robotWeapon.attackPower + ") ");
+                        " (" + robotFleet.robots[i].robotWeapon.attackPower + ") (" + robotFleet.robots[i].powerLevel + " energy)");
 
                 }
 
@@ -257,7 +257,7 @@ namespace RobotsVsDinos
 
         public bool HitChance(int attackPower)
         {
-            if (randomBool.Next(110) > attackPower )
+            if (randomBool.Next(200) > attackPower )
             {
                 return true;
             }

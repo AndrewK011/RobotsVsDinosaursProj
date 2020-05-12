@@ -71,16 +71,29 @@ namespace RobotsVsDinos
 
             attackPower *= (int)attackMult;
             
-            enemy.health -= attackPower;
-            Console.WriteLine(enemy.name + " takes " + attackPower + " damage from " + type + "'s " + dinoAttacks[userInput]);
-            if (enemy.health <= 0)
+            if(energy >= (attackPower / 2))
             {
-                Console.WriteLine(enemy.name + " has been defeated.");              
+                enemy.health -= attackPower;
+                energy -= attackPower / 2;
+                Console.WriteLine(enemy.name + " takes " + attackPower + " damage from " + type + "'s " + dinoAttacks[userInput]);
+
+                if (enemy.health <= 0)
+                {
+                    Console.WriteLine(enemy.name + " has been defeated.");
+                }
+                else
+                {
+                    Console.WriteLine(enemy.name + " now has " + enemy.health + " health remaining.");
+                }
+
             }
+
             else
             {
-                Console.WriteLine(enemy.name + " now has " + enemy.health + " health remaining.");
+                Console.WriteLine("Your dino is overexerted.");
+                
             }
+
         }
     }
 }

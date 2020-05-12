@@ -13,6 +13,8 @@ namespace RobotsVsDinos
         public int health;
         public int powerLevel;
         public Weapon robotWeapon;
+        
+        
 
 
         public Robot(string name, string weapon)
@@ -20,8 +22,10 @@ namespace RobotsVsDinos
             this.name = name;
             health = 100;
             powerLevel = 50;
-            robotWeapon = new Weapon(weapon);
+            //Weapon robotWeapon;
+            
         }
+
 
         public void Attack(Robot attackByRobot, Dinosaur enemy)
         {
@@ -39,6 +43,7 @@ namespace RobotsVsDinos
             }
             
         }
+
 
     }
 }

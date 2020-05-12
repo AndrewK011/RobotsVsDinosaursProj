@@ -11,12 +11,15 @@ namespace RobotsVsDinos
         //member variables
         public string type;
         public int attackPower;
+        
 
         //constructor
-        public Weapon(string type)
+        public Weapon(string type, int attackPower)
         {
             this.type = type;
-            attackPower = 25;
+            this.attackPower = attackPower;
         }
+
+        
     }
 }

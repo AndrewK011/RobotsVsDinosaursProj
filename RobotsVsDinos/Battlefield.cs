@@ -16,6 +16,7 @@ namespace RobotsVsDinos
         public bool dinoWin = false;
         
         public bool playerTurn;
+        public Random randomBool = new Random();
         
 
         public Battlefield()
@@ -28,6 +29,24 @@ namespace RobotsVsDinos
         
         public void StartBattle()
         {
+            robotFleet.CreateWeaponList();
+            robotFleet.ChooseWeapon(robotFleet.Optimus);
+            robotFleet.ChooseWeapon(robotFleet.Hal);
+            robotFleet.ChooseWeapon(robotFleet.Phil);
+
+           
+            if(randomBool.Next(2) == 1)
+            {
+                playerTurn = true;
+                Console.WriteLine();
+                Console.WriteLine("Dinos go first!");
+            }
+            else
+            {
+                Console.WriteLine();
+                Console.WriteLine("Robots go first!");
+            }
+
             while (gameOver == false)
             {
                 if (playerTurn)
@@ -60,7 +79,7 @@ namespace RobotsVsDinos
 
         public void DinoAttack()
         {
-            Console.WriteLine("With which dinosaur do you want to attack?");
+            Console.WriteLine("Pick a dinosaur to attack with:");
             for(int i = 0; i < dinoHerd.dinos.Count; i++)
             {
                 Console.Write(i + ") ");
@@ -69,7 +88,7 @@ namespace RobotsVsDinos
 
             attackerIndex = int.Parse(Console.ReadLine());
 
-            Console.WriteLine("Which robot do you want to attack?");
+            Console.WriteLine("Choose your target: ");
             for (int i = 0; i < robotFleet.robots.Count; i++)
             {
                 Console.Write(i + ") ");
@@ -85,7 +104,7 @@ namespace RobotsVsDinos
 
         public void RoboAttack()
         {
-            Console.WriteLine("With which robot do you want to attack?");
+            Console.WriteLine("Pick a robot to attack with: ");
             for (int i = 0; i < robotFleet.robots.Count; i++)
             {
                 Console.Write(i + ") ");
@@ -94,7 +113,7 @@ namespace RobotsVsDinos
 
             attackerIndex = int.Parse(Console.ReadLine());
 
-            Console.WriteLine("Which dinosaur do you want to attack?");
+            Console.WriteLine("Choose your target: ");
             for (int i = 0; i < dinoHerd.dinos.Count; i++)
             {
                 Console.Write(i + ") ");

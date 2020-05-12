@@ -66,13 +66,19 @@ namespace RobotsVsDinos
                 Console.WriteLine(i + ") " + weapons[i].type + " (" + weapons[i].attackPower + ")");
                 }
 
-                if (int.TryParse(Console.ReadLine(), out userChoice))
+                if ((int.TryParse(Console.ReadLine(), out userChoice)))
                 {
                     validInput = true;
                 }
                 else
                 {
-                    Console.WriteLine("Incorrect input.");
+                    Console.WriteLine("Incorrect input, not an integer.");
+                }
+
+                if(userChoice < 0 || userChoice >= weapons.Count)
+                {
+                    Console.WriteLine("Incorrect input, not a valid choice.");
+                    validInput = false;
                 }
 
             }

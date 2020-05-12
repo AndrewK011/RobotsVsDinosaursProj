@@ -82,7 +82,7 @@ namespace RobotsVsDinos
         public void DinoAttack()
         {
             bool validInput = false;
-            int userInput;
+            
             while (!validInput)
             {
                
@@ -99,7 +99,13 @@ namespace RobotsVsDinos
                 }
                 else
                 {
-                    Console.WriteLine("Incorrect input.");
+                    Console.WriteLine("Incorrect input, must be an integer.");
+                }
+
+                if (attackerIndex < 0 || attackerIndex >= dinoHerd.dinos.Count)
+                {
+                    Console.WriteLine("Incorrect input, not a valid choice.");
+                    validInput = false;
                 }
 
             }
@@ -112,12 +118,13 @@ namespace RobotsVsDinos
             while (!validInput)
             {
                
-            Console.WriteLine("Choose your target: ");
-            for (int i = 0; i < robotFleet.robots.Count; i++)
-            {
-                Console.Write(i + ") ");
-                Console.WriteLine(robotFleet.robots[i].name);
-            }
+                Console.WriteLine("Choose your target: ");
+
+                for (int i = 0; i < robotFleet.robots.Count; i++)
+                {
+                    Console.Write(i + ") ");
+                    Console.WriteLine(robotFleet.robots[i].name);
+                }
 
                 if (int.TryParse(Console.ReadLine(), out enemyIndex))
                 {
@@ -125,38 +132,110 @@ namespace RobotsVsDinos
                 }
                 else
                 {
-                    Console.WriteLine("Incorrect input.");
+                    Console.WriteLine("Incorrect input, must be an integer.");
+                }
+
+                if (enemyIndex < 0 || enemyIndex >= robotFleet.robots.Count)
+                {
+                    Console.WriteLine("Incorrect input, not a valid choice.");
+                    validInput = false;
                 }
 
             }
 
-            dinoHerd.dinos[attackerIndex].Attack(robotFleet.robots[enemyIndex]);
+
+            if (HitChance(dinoHerd.dinos[attackerIndex].attackPower))
+            {
+               
+                dinoHerd.dinos[attackerIndex].Attack(robotFleet.robots[enemyIndex]);
+
+            }
+
+            else
+            {
+                Console.WriteLine("The attack missed!");
+            }
 
                      
         }
 
         public void RoboAttack()
         {
-            Console.WriteLine("Pick a robot to attack with: ");
-            for (int i = 0; i < robotFleet.robots.Count; i++)
+
+            bool validInput = false;
+
+
+            while (!validInput)
             {
-                Console.Write(i + ") ");
-                Console.WriteLine(robotFleet.robots[i].name);
+                Console.WriteLine("Pick a robot to attack with: ");
+                for (int i = 0; i < robotFleet.robots.Count; i++)
+                {
+                    Console.Write(i + ") ");
+                    Console.WriteLine(robotFleet.robots[i].name + " [" + robotFleet.robots[i].robotWeapon.type + "]" +
+                        " (" + robotFleet.robots[i].robotWeapon.attackPower + ") ");
+
+                }
+
+                if (int.TryParse(Console.ReadLine(), out attackerIndex))
+                {
+                    validInput = true;
+                }
+                else
+                {
+                    Console.WriteLine("Incorrect input, must be an integer.");
+                }
+
+                if (attackerIndex < 0 || attackerIndex >= robotFleet.robots.Count)
+                {
+                    Console.WriteLine("Incorrect input, not a valid choice.");
+                    validInput = false;
+                }
             }
 
-            attackerIndex = int.Parse(Console.ReadLine());
+            validInput = false;
 
-            Console.WriteLine("Choose your target: ");
-            for (int i = 0; i < dinoHerd.dinos.Count; i++)
+
+            while (!validInput)
             {
-                Console.Write(i + ") ");
-                Console.WriteLine(dinoHerd.dinos[i].type);
+
+                Console.WriteLine("Choose your target: ");
+                for (int i = 0; i < dinoHerd.dinos.Count; i++)
+                {
+                    Console.Write(i + ") ");
+                    Console.WriteLine(dinoHerd.dinos[i].type);
+                }
+
+                if (int.TryParse(Console.ReadLine(), out enemyIndex))
+                {
+                    validInput = true;
+                }
+                else
+                {
+                    Console.WriteLine("Incorrect input, must be an integer.");
+                }
+
+                if (enemyIndex < 0 || enemyIndex >= dinoHerd.dinos.Count)
+                {
+                    Console.WriteLine("Incorrect input, not a valid choice.");
+                    validInput = false;
+                }
             }
 
-            enemyIndex = int.Parse(Console.ReadLine());
+            
 
+            if (HitChance(robotFleet.robots[attackerIndex].robotWeapon.attackPower))
+            {
+                robotFleet.robots[attackerIndex].Attack(dinoHerd.dinos[enemyIndex]);
 
-            robotFleet.robots[attackerIndex].Attack(dinoHerd.dinos[enemyIndex]);
+            }
+
+            else
+            {
+                Console.WriteLine("The attack missed!");
+            }
+            
+
+            
         }
 
         public bool CheckRoundResult()
@@ -176,7 +255,17 @@ namespace RobotsVsDinos
             return gameOver;
         }
 
-
+        public bool HitChance(int attackPower)
+        {
+            if (randomBool.Next(110) > attackPower )
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
 
 

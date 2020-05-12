@@ -13,6 +13,7 @@ namespace RobotsVsDinos
         public int health;
         public int energy;
         public int attackPower;
+        public string[] dinoAttacks = new string[3] {"light attack", "heavy attack", "special attack"};
 
         //constructor
         public Dinosaur(string type, int attackPower)
@@ -23,17 +24,63 @@ namespace RobotsVsDinos
             this.attackPower = attackPower;
         }
 
-        public void Attack(Dinosaur attackByDino, Robot enemy)
+        public void Attack(Robot enemy)
         {
-            enemy.health -= attackByDino.attackPower;
-            Console.WriteLine(enemy.name + " takes " + attackByDino.attackPower + " points of damage from " + attackByDino.type + "'s attack.");
+            bool validInput = false;
+            int userInput = 0;
+            double attackMult;
+            
+
+            while (!validInput)
+            {
+                Console.WriteLine("Choose your type of attack: ");
+                for (int i = 0; i < dinoAttacks.Length; i++)
+                {
+                    Console.WriteLine(i + ") " + dinoAttacks[i]);
+                }
+
+                if(int.TryParse(Console.ReadLine(), out userInput))
+                {
+                    validInput = true;
+                }
+                else
+                {
+                    Console.WriteLine("Incorrect input.");
+                }
+                
+            }
+
+            switch(userInput)
+            {
+                case 0:
+                    attackMult = 1.0;
+                    break;
+                case 1:
+                    attackMult = 1.5;
+                    break;
+                case 2:
+                    attackMult = 2.0;
+                    break;
+
+                default:
+                    attackMult = 1.0;
+                    break;
+
+
+            }
+
+            attackPower *= (int)attackMult;
+            
+
+            enemy.health -= attackPower;
+            Console.WriteLine(enemy.name + " takes " + attackPower + " damage from " + type + "'s " + dinoAttacks[userInput]);
             if (enemy.health <= 0)
             {
                 Console.WriteLine(enemy.name + " has been defeated.");              
             }
             else
             {
-                Console.WriteLine(enemy.name + " now has " + enemy.health + " health points remaining.");
+                Console.WriteLine(enemy.name + " now has " + enemy.health + " health remaining.");
             }
         }
     }

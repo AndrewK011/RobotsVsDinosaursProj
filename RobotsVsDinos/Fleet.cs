@@ -9,9 +9,9 @@ namespace RobotsVsDinos
     public class Fleet
     {
         public List<Robot> robots;
-        public Robot Optimus = new Robot("Optimus","Rockets");
-        public Robot Hal = new Robot("Hal", "Superior Intellect");
-        public Robot Phil = new Robot("Phil", "Fists");
+        public Robot Optimus = new Robot("Optimus");
+        public Robot Hal = new Robot("Hal");
+        public Robot Phil = new Robot("Phil");
         public List<Weapon> weapons = new List<Weapon>();
         public Weapon laser = new Weapon("laser", 30);
         public Weapon rocketLauncher = new Weapon("rocket launcher", 50);
@@ -54,15 +54,30 @@ namespace RobotsVsDinos
 
         public void ChooseWeapon(Robot robotLoadout)
         {
+            bool validInput = false;
+            int userChoice = 0;
 
-            int userChoice;
-            Console.WriteLine("Choose a weapon for " + robotLoadout.name + ": ");
-            for (int i = 0; i < weapons.Count; i++)
+            while (!validInput)
             {
+                
+                Console.WriteLine("Choose a weapon for " + robotLoadout.name + ": ");
+                for (int i = 0; i < weapons.Count; i++)
+                {
                 Console.WriteLine(i + ") " + weapons[i].type + " (" + weapons[i].attackPower + ")");
+                }
+
+                if (int.TryParse(Console.ReadLine(), out userChoice))
+                {
+                    validInput = true;
+                }
+                else
+                {
+                    Console.WriteLine("Incorrect input.");
+                }
+
             }
 
-            userChoice = int.Parse(Console.ReadLine());
+           
 
             robotLoadout.robotWeapon = weapons[userChoice];
             weapons.RemoveAt(userChoice);

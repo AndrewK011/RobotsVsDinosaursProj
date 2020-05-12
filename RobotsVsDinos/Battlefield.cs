@@ -40,11 +40,13 @@ namespace RobotsVsDinos
                 playerTurn = true;
                 Console.WriteLine();
                 Console.WriteLine("Dinos go first!");
+                Console.WriteLine();
             }
             else
             {
                 Console.WriteLine();
                 Console.WriteLine("Robots go first!");
+                Console.WriteLine();
             }
 
             while (gameOver == false)
@@ -79,6 +81,11 @@ namespace RobotsVsDinos
 
         public void DinoAttack()
         {
+            bool validInput = false;
+            int userInput;
+            while (!validInput)
+            {
+               
             Console.WriteLine("Pick a dinosaur to attack with:");
             for(int i = 0; i < dinoHerd.dinos.Count; i++)
             {
@@ -86,8 +93,25 @@ namespace RobotsVsDinos
                 Console.WriteLine(dinoHerd.dinos[i].type);
             }
 
-            attackerIndex = int.Parse(Console.ReadLine());
+                if (int.TryParse(Console.ReadLine(), out attackerIndex))
+                {
+                    validInput = true;
+                }
+                else
+                {
+                    Console.WriteLine("Incorrect input.");
+                }
 
+            }
+
+            
+
+            validInput = false;
+
+
+            while (!validInput)
+            {
+               
             Console.WriteLine("Choose your target: ");
             for (int i = 0; i < robotFleet.robots.Count; i++)
             {
@@ -95,10 +119,19 @@ namespace RobotsVsDinos
                 Console.WriteLine(robotFleet.robots[i].name);
             }
 
-            enemyIndex = int.Parse(Console.ReadLine());
+                if (int.TryParse(Console.ReadLine(), out enemyIndex))
+                {
+                    validInput = true;
+                }
+                else
+                {
+                    Console.WriteLine("Incorrect input.");
+                }
 
+            }
 
-            dinoHerd.dinos[attackerIndex].Attack(dinoHerd.dinos[attackerIndex], robotFleet.robots[enemyIndex]);
+            dinoHerd.dinos[attackerIndex].Attack(robotFleet.robots[enemyIndex]);
+
                      
         }
 
@@ -123,7 +156,7 @@ namespace RobotsVsDinos
             enemyIndex = int.Parse(Console.ReadLine());
 
 
-            robotFleet.robots[attackerIndex].Attack(robotFleet.robots[attackerIndex], dinoHerd.dinos[enemyIndex]);
+            robotFleet.robots[attackerIndex].Attack(dinoHerd.dinos[enemyIndex]);
         }
 
         public bool CheckRoundResult()

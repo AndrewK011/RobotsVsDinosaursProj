@@ -17,20 +17,19 @@ namespace RobotsVsDinos
         
 
 
-        public Robot(string name, string weapon)
+        public Robot(string name)
         {
             this.name = name;
             health = 100;
-            powerLevel = 50;
-            //Weapon robotWeapon;
-            
+            powerLevel = 50;                    
         }
 
 
-        public void Attack(Robot attackByRobot, Dinosaur enemy)
+        public void Attack(Dinosaur enemy)
         {
-            enemy.health -= attackByRobot.robotWeapon.attackPower;
-            Console.WriteLine(enemy.type + " takes " + attackByRobot.robotWeapon.attackPower + " points of damage from " + attackByRobot.name + ".");
+            enemy.health -= robotWeapon.attackPower;
+            
+            Console.WriteLine(enemy.type + " takes " + robotWeapon.attackPower + " points of damage from " + name + "'s " + robotWeapon.type + ".");
 
             if (enemy.health <= 0)
             {

@@ -43,19 +43,19 @@ namespace RobotsVsDinos
                 robots.Remove(Phil);
             }
 
-            if (Optimus.powerLevel < 50)
+            if (Optimus.powerLevel <= 40)
             {
                 Optimus.powerLevel += 10;
 
             }
 
-            if (Hal.powerLevel < 50)
+            if (Hal.powerLevel <= 40)
             {
                 Hal.powerLevel += 10;
 
             }
 
-            if (Phil.powerLevel < 50)
+            if (Phil.powerLevel <= 40)
             {
                 Phil.powerLevel += 10;
 

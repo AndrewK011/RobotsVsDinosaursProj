@@ -13,7 +13,7 @@ namespace RobotsVsDinos
         public int health;
         public int energy;
         public int attackPower;
-        public string[] dinoAttacks = new string[3] {"light attack x1", "heavy attack x1.5", "special attack x2"};
+        public string[] dinoAttacks = new string[3] {"light attack (x1)", "heavy attack (x1.5)", "special attack (x2)"};
 
         //constructor
         public Dinosaur(string type, int attackPower)
